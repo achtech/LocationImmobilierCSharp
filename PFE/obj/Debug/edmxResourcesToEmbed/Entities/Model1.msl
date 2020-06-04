@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GlocationAppartementModelStoreContainer" CdmEntityContainer="GlocationAppartementEntities1">
+    <EntitySetMapping Name="Authentifications">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Authentifications">
+        <MappingFragment StoreEntitySet="Authentifications">
+          <ScalarProperty Name="id_utilisateurs" ColumnName="id_utilisateurs" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="id_categories" ColumnName="id_categories" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="id_clients" ColumnName="id_clients" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="cin" ColumnName="cin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Immeubiliers">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Immeubiliers">
+        <MappingFragment StoreEntitySet="Immeubiliers">
+          <ScalarProperty Name="tarif" ColumnName="tarif" />
+          <ScalarProperty Name="id_immeubiliers" ColumnName="id_immeubiliers" />
+          <ScalarProperty Name="nbr_chambre" ColumnName="nbr_chambre" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id_categories" ColumnName="id_categories" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="nom_proprietaire" ColumnName="nom_proprietaire" />
+          <ScalarProperty Name="tel_proprietaire" ColumnName="tel_proprietaire" />
+          <ScalarProperty Name="superficie" ColumnName="superficie" />
+          <ScalarProperty Name="id_villes" ColumnName="id_villes" />
+          <ScalarProperty Name="id_quartiers" ColumnName="id_quartiers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quartiers">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Quartiers">
+        <MappingFragment StoreEntitySet="Quartiers">
+          <ScalarProperty Name="id_quartiers" ColumnName="id_quartiers" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="id_villes" ColumnName="id_villes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Reservations">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id_reservations" ColumnName="id_reservations" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+          <ScalarProperty Name="id_immeubiliers" ColumnName="id_immeubiliers" />
+          <ScalarProperty Name="id_clients" ColumnName="id_clients" />
+          <ScalarProperty Name="nbr_personne" ColumnName="nbr_personne" />
+          <ScalarProperty Name="tarif" ColumnName="tarif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Villes">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.Villes">
+        <MappingFragment StoreEntitySet="Villes">
+          <ScalarProperty Name="id_villes" ColumnName="id_villes" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GlocationAppartementModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

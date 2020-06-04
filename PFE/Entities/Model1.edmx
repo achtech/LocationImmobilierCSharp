@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GlocationAppartementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Authentifications">
+          <Key>
+            <PropertyRef Name="id_utilisateurs" />
+          </Key>
+          <Property Name="id_utilisateurs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar(max)" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="id_categories" />
+          </Key>
+          <Property Name="id_categories" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="id_clients" />
+          </Key>
+          <Property Name="id_clients" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar(max)" />
+          <Property Name="tel" Type="nvarchar(max)" />
+          <Property Name="cin" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Immeubiliers">
+          <Key>
+            <PropertyRef Name="id_immeubiliers" />
+          </Key>
+          <Property Name="id_immeubiliers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tarif" Type="real" Nullable="false" />
+          <Property Name="nbr_chambre" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" />
+          <Property Name="id_categories" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="nom_proprietaire" Type="nvarchar(max)" />
+          <Property Name="tel_proprietaire" Type="nvarchar(max)" />
+          <Property Name="superficie" Type="real" Nullable="false" />
+          <Property Name="id_villes" Type="int" />
+          <Property Name="id_quartiers" Type="int" />
+        </EntityType>
+        <EntityType Name="Quartiers">
+          <Key>
+            <PropertyRef Name="id_quartiers" />
+          </Key>
+          <Property Name="id_quartiers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+          <Property Name="id_villes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="id_reservations" />
+          </Key>
+          <Property Name="id_reservations" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_debut" Type="datetime" Nullable="false" />
+          <Property Name="date_fin" Type="datetime" Nullable="false" />
+          <Property Name="id_immeubiliers" Type="int" Nullable="false" />
+          <Property Name="id_clients" Type="int" Nullable="false" />
+          <Property Name="nbr_personne" Type="int" Nullable="false" />
+          <Property Name="tarif" Type="real" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Villes">
+          <Key>
+            <PropertyRef Name="id_villes" />
+          </Key>
+          <Property Name="id_villes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Immeubili__id_qu__6EF57B66">
+          <End Role="Quartiers" Type="Self.Quartiers" Multiplicity="0..1" />
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartiers">
+              <PropertyRef Name="id_quartiers" />
+            </Principal>
+            <Dependent Role="Immeubiliers">
+              <PropertyRef Name="id_quartiers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Immeubili__id_vi__6E01572D">
+          <End Role="Villes" Type="Self.Villes" Multiplicity="0..1" />
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="id_villes" />
+            </Principal>
+            <Dependent Role="Immeubiliers">
+              <PropertyRef Name="id_villes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Immeubiliers_dbo_Categories_id_categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id_categories" />
+            </Principal>
+            <Dependent Role="Immeubiliers">
+              <PropertyRef Name="id_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Quartiers_dbo_Villes_id_villes">
+          <End Role="Villes" Type="Self.Villes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Quartiers" Type="Self.Quartiers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="id_villes" />
+            </Principal>
+            <Dependent Role="Quartiers">
+              <PropertyRef Name="id_villes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Reservations_dbo_Clients_id_clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="id_clients" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="id_clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Reservations_dbo_Immeubiliers_id_clients">
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Immeubiliers">
+              <PropertyRef Name="id_immeubiliers" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="id_clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GlocationAppartementModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authentifications" EntityType="Self.Authentifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Immeubiliers" EntityType="Self.Immeubiliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quartiers" EntityType="Self.Quartiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Villes" EntityType="Self.Villes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Immeubili__id_qu__6EF57B66" Association="Self.FK__Immeubili__id_qu__6EF57B66">
+            <End Role="Quartiers" EntitySet="Quartiers" />
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immeubili__id_vi__6E01572D" Association="Self.FK__Immeubili__id_vi__6E01572D">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Immeubiliers_dbo_Categories_id_categories" Association="Self.FK_dbo_Immeubiliers_dbo_Categories_id_categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Quartiers_dbo_Villes_id_villes" Association="Self.FK_dbo_Quartiers_dbo_Villes_id_villes">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Quartiers" EntitySet="Quartiers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Reservations_dbo_Clients_id_clients" Association="Self.FK_dbo_Reservations_dbo_Clients_id_clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Reservations_dbo_Immeubiliers_id_clients" Association="Self.FK_dbo_Reservations_dbo_Immeubiliers_id_clients">
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GlocationAppartementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authentifications">
+          <Key>
+            <PropertyRef Name="id_utilisateurs" />
+          </Key>
+          <Property Name="id_utilisateurs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="id_categories" />
+          </Key>
+          <Property Name="id_categories" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Immeubiliers" Relationship="Self.FK_dbo_Immeubiliers_dbo_Categories_id_categories" FromRole="Categories" ToRole="Immeubiliers" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="id_clients" />
+          </Key>
+          <Property Name="id_clients" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_dbo_Reservations_dbo_Clients_id_clients" FromRole="Clients" ToRole="Reservations" />
+        </EntityType>
+        <EntityType Name="Immeubiliers">
+          <Key>
+            <PropertyRef Name="id_immeubiliers" />
+          </Key>
+          <Property Name="id_immeubiliers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nbr_chambre" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_categories" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nom_proprietaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tel_proprietaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="superficie" Type="Single" Nullable="false" />
+          <Property Name="id_villes" Type="Int32" />
+          <Property Name="id_quartiers" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_dbo_Immeubiliers_dbo_Categories_id_categories" FromRole="Immeubiliers" ToRole="Categories" />
+          <NavigationProperty Name="Quartiers" Relationship="Self.FK__Immeubili__id_qu__6EF57B66" FromRole="Immeubiliers" ToRole="Quartiers" />
+          <NavigationProperty Name="Villes" Relationship="Self.FK__Immeubili__id_vi__6E01572D" FromRole="Immeubiliers" ToRole="Villes" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_dbo_Reservations_dbo_Immeubiliers_id_clients" FromRole="Immeubiliers" ToRole="Reservations" />
+          <Property Name="tarif" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quartiers">
+          <Key>
+            <PropertyRef Name="id_quartiers" />
+          </Key>
+          <Property Name="id_quartiers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_villes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Immeubiliers" Relationship="Self.FK__Immeubili__id_qu__6EF57B66" FromRole="Quartiers" ToRole="Immeubiliers" />
+          <NavigationProperty Name="Villes" Relationship="Self.FK_dbo_Quartiers_dbo_Villes_id_villes" FromRole="Quartiers" ToRole="Villes" />
+        </EntityType>
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="id_reservations" />
+          </Key>
+          <Property Name="id_reservations" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_debut" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_immeubiliers" Type="Int32" Nullable="false" />
+          <Property Name="id_clients" Type="Int32" Nullable="false" />
+          <Property Name="nbr_personne" Type="Int32" Nullable="false" />
+          <Property Name="tarif" Type="Single" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_dbo_Reservations_dbo_Clients_id_clients" FromRole="Reservations" ToRole="Clients" />
+          <NavigationProperty Name="Immeubiliers" Relationship="Self.FK_dbo_Reservations_dbo_Immeubiliers_id_clients" FromRole="Reservations" ToRole="Immeubiliers" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Villes">
+          <Key>
+            <PropertyRef Name="id_villes" />
+          </Key>
+          <Property Name="id_villes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Immeubiliers" Relationship="Self.FK__Immeubili__id_vi__6E01572D" FromRole="Villes" ToRole="Immeubiliers" />
+          <NavigationProperty Name="Quartiers" Relationship="Self.FK_dbo_Quartiers_dbo_Villes_id_villes" FromRole="Villes" ToRole="Quartiers" />
+        </EntityType>
+        <Association Name="FK_dbo_Immeubiliers_dbo_Categories_id_categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id_categories" />
+            </Principal>
+            <Dependent Role="Immeubiliers">
+              <PropertyRef Name="id_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Reservations_dbo_Clients_id_clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="id_clients" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="id_clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Immeubili__id_qu__6EF57B66">
+          <End Role="Quartiers" Type="Self.Quartiers" Multiplicity="0..1" />
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartiers">
+              <PropertyRef Name="id_quartiers" />
+            </Principal>
+            <Dependent Role="Immeubiliers">
+              <PropertyRef Name="id_quartiers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Immeubili__id_vi__6E01572D">
+          <End Role="Villes" Type="Self.Villes" Multiplicity="0..1" />
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="id_villes" />
+            </Principal>
+            <Dependent Role="Immeubiliers">
+              <PropertyRef Name="id_villes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Reservations_dbo_Immeubiliers_id_clients">
+          <End Role="Immeubiliers" Type="Self.Immeubiliers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Immeubiliers">
+              <PropertyRef Name="id_immeubiliers" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="id_clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Quartiers_dbo_Villes_id_villes">
+          <End Role="Villes" Type="Self.Villes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Quartiers" Type="Self.Quartiers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="id_villes" />
+            </Principal>
+            <Dependent Role="Quartiers">
+              <PropertyRef Name="id_villes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GlocationAppartementEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authentifications" EntityType="Self.Authentifications" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Immeubiliers" EntityType="Self.Immeubiliers" />
+          <EntitySet Name="Quartiers" EntityType="Self.Quartiers" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" />
+          <EntitySet Name="Villes" EntityType="Self.Villes" />
+          <AssociationSet Name="FK_dbo_Immeubiliers_dbo_Categories_id_categories" Association="Self.FK_dbo_Immeubiliers_dbo_Categories_id_categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Reservations_dbo_Clients_id_clients" Association="Self.FK_dbo_Reservations_dbo_Clients_id_clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immeubili__id_qu__6EF57B66" Association="Self.FK__Immeubili__id_qu__6EF57B66">
+            <End Role="Quartiers" EntitySet="Quartiers" />
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immeubili__id_vi__6E01572D" Association="Self.FK__Immeubili__id_vi__6E01572D">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Reservations_dbo_Immeubiliers_id_clients" Association="Self.FK_dbo_Reservations_dbo_Immeubiliers_id_clients">
+            <End Role="Immeubiliers" EntitySet="Immeubiliers" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Quartiers_dbo_Villes_id_villes" Association="Self.FK_dbo_Quartiers_dbo_Villes_id_villes">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Quartiers" EntitySet="Quartiers" />
+          </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="GlocationAppartementModel.C__MigrationHistory" />
+          <EntitySet Name="sysdiagrams" EntityType="GlocationAppartementModel.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GlocationAppartementModelStoreContainer" CdmEntityContainer="GlocationAppartementEntities1">
+          <EntitySetMapping Name="Authentifications">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Authentifications">
+              <MappingFragment StoreEntitySet="Authentifications">
+                <ScalarProperty Name="id_utilisateurs" ColumnName="id_utilisateurs" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="id_categories" ColumnName="id_categories" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="id_clients" ColumnName="id_clients" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="cin" ColumnName="cin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Immeubiliers">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Immeubiliers">
+              <MappingFragment StoreEntitySet="Immeubiliers">
+                <ScalarProperty Name="tarif" ColumnName="tarif" />
+                <ScalarProperty Name="id_immeubiliers" ColumnName="id_immeubiliers" />
+                <ScalarProperty Name="nbr_chambre" ColumnName="nbr_chambre" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_categories" ColumnName="id_categories" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="nom_proprietaire" ColumnName="nom_proprietaire" />
+                <ScalarProperty Name="tel_proprietaire" ColumnName="tel_proprietaire" />
+                <ScalarProperty Name="superficie" ColumnName="superficie" />
+                <ScalarProperty Name="id_villes" ColumnName="id_villes" />
+                <ScalarProperty Name="id_quartiers" ColumnName="id_quartiers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quartiers">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Quartiers">
+              <MappingFragment StoreEntitySet="Quartiers">
+                <ScalarProperty Name="id_quartiers" ColumnName="id_quartiers" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="id_villes" ColumnName="id_villes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Reservations">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_reservations" ColumnName="id_reservations" />
+                <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+                <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+                <ScalarProperty Name="id_immeubiliers" ColumnName="id_immeubiliers" />
+                <ScalarProperty Name="id_clients" ColumnName="id_clients" />
+                <ScalarProperty Name="nbr_personne" ColumnName="nbr_personne" />
+                <ScalarProperty Name="tarif" ColumnName="tarif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Villes">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.Villes">
+              <MappingFragment StoreEntitySet="Villes">
+                <ScalarProperty Name="id_villes" ColumnName="id_villes" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GlocationAppartementModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
