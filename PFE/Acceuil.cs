@@ -89,5 +89,11 @@ namespace PFE
             Utilisateurs.Ajouter_Utilisateur f = new Utilisateurs.Ajouter_Utilisateur();
             f.Show();
         }
+
+        private void listeClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clients.ListeClient f = new Clients.ListeClient();
+            f.Show();
+        }
     }
 }

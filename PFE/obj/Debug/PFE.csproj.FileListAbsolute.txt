@@ -36,3 +36,4 @@ D:\projet kawtar\PFE\PFE\obj\Debug\PFE.Immeubiliers.ListeImmeubiliers.resources
 D:\projet kawtar\PFE\PFE\obj\Debug\PFE.Immobiliers.AjouterImmeubilier.resources
 D:\projet kawtar\PFE\PFE\obj\Debug\PFE.Reservations.AjouterReservation.resources
 D:\projet kawtar\PFE\PFE\obj\Debug\PFE.Utilisateurs.nouveau_utilisateur.resources
+D:\projet kawtar\PFE\PFE\obj\Debug\PFE.Clients.ListeClient.resources
