@@ -42,7 +42,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nouveauClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,8 +142,7 @@
             // clientToolStripMenuItem
             // 
             this.clientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listeClientToolStripMenuItem,
-            this.nouveauClientToolStripMenuItem});
+            this.listeClientToolStripMenuItem});
             this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
             this.clientToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.clientToolStripMenuItem.Text = "Client";
@@ -155,12 +153,6 @@
             this.listeClientToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.listeClientToolStripMenuItem.Text = "Liste Client";
             this.listeClientToolStripMenuItem.Click += new System.EventHandler(this.listeClientToolStripMenuItem_Click);
-            // 
-            // nouveauClientToolStripMenuItem
-            // 
-            this.nouveauClientToolStripMenuItem.Name = "nouveauClientToolStripMenuItem";
-            this.nouveauClientToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.nouveauClientToolStripMenuItem.Text = "Nouveau client";
             // 
             // Acceuil
             // 
@@ -197,7 +189,6 @@
         private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listeClientToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nouveauClientToolStripMenuItem;
     }
 }
 

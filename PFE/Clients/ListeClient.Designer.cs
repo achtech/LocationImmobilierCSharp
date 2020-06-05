@@ -43,15 +43,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.chercherBtm = new System.Windows.Forms.Button();
+            this.ajouterBtm = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.listeResvBtm = new System.Windows.Forms.Button();
+            this.teleClt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.modifierBtm = new System.Windows.Forms.Button();
             this.idclientsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClt)).BeginInit();
@@ -64,7 +68,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(364, 25);
+            this.label1.Location = new System.Drawing.Point(400, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(202, 36);
             this.label1.TabIndex = 0;
@@ -72,18 +76,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.modifierBtm);
+            this.groupBox1.Controls.Add(this.teleClt);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.listeResvBtm);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.ajouterBtm);
+            this.groupBox1.Controls.Add(this.chercherBtm);
             this.groupBox1.Controls.Add(this.cinCltText);
             this.groupBox1.Controls.Add(this.nomCltTxt);
             this.groupBox1.Controls.Add(this.dataGridClt);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(21, 79);
+            this.groupBox1.Location = new System.Drawing.Point(21, 59);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(938, 312);
+            this.groupBox1.Size = new System.Drawing.Size(1097, 332);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clients";
@@ -97,9 +104,9 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dataGridRes);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(21, 397);
+            this.groupBox2.Location = new System.Drawing.Point(21, 396);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(938, 285);
+            this.groupBox2.Size = new System.Drawing.Size(1097, 305);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservations";
@@ -109,7 +116,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(124, 25);
+            this.label2.Location = new System.Drawing.Point(18, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 29);
             this.label2.TabIndex = 0;
@@ -120,7 +127,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Navy;
-            this.label3.Location = new System.Drawing.Point(420, 27);
+            this.label3.Location = new System.Drawing.Point(22, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 29);
             this.label3.TabIndex = 1;
@@ -137,25 +144,26 @@
             this.telDataGridViewTextBoxColumn,
             this.cinDataGridViewTextBoxColumn});
             this.dataGridClt.DataSource = this.clientsBindingSource;
-            this.dataGridClt.Location = new System.Drawing.Point(23, 117);
+            this.dataGridClt.Location = new System.Drawing.Point(397, 29);
             this.dataGridClt.Name = "dataGridClt";
             this.dataGridClt.RowTemplate.Height = 24;
-            this.dataGridClt.Size = new System.Drawing.Size(874, 184);
+            this.dataGridClt.Size = new System.Drawing.Size(681, 272);
             this.dataGridClt.TabIndex = 2;
+            this.dataGridClt.DoubleClick += new System.EventHandler(this.dataGridClt_DoubleClick);
             // 
             // dataGridRes
             // 
             this.dataGridRes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridRes.Location = new System.Drawing.Point(23, 60);
+            this.dataGridRes.Location = new System.Drawing.Point(39, 67);
             this.dataGridRes.Name = "dataGridRes";
             this.dataGridRes.RowTemplate.Height = 24;
-            this.dataGridRes.Size = new System.Drawing.Size(874, 212);
+            this.dataGridRes.Size = new System.Drawing.Size(1039, 219);
             this.dataGridRes.TabIndex = 3;
             // 
             // nomCltTxt
             // 
             this.nomCltTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomCltTxt.Location = new System.Drawing.Point(195, 28);
+            this.nomCltTxt.Location = new System.Drawing.Point(108, 53);
             this.nomCltTxt.Name = "nomCltTxt";
             this.nomCltTxt.Size = new System.Drawing.Size(219, 30);
             this.nomCltTxt.TabIndex = 3;
@@ -163,10 +171,11 @@
             // cinCltText
             // 
             this.cinCltText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cinCltText.Location = new System.Drawing.Point(475, 28);
+            this.cinCltText.Location = new System.Drawing.Point(109, 104);
             this.cinCltText.Name = "cinCltText";
-            this.cinCltText.Size = new System.Drawing.Size(205, 30);
+            this.cinCltText.Size = new System.Drawing.Size(218, 30);
             this.cinCltText.TabIndex = 4;
+            this.cinCltText.TextChanged += new System.EventHandler(this.cinCltText_TextChanged);
             // 
             // label4
             // 
@@ -210,28 +219,29 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(222, 30);
             this.dateTimePicker2.TabIndex = 7;
             // 
-            // button1
+            // chercherBtm
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Navy;
-            this.button1.Location = new System.Drawing.Point(701, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 33);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Chercher";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.chercherBtm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chercherBtm.ForeColor = System.Drawing.Color.Navy;
+            this.chercherBtm.Location = new System.Drawing.Point(272, 217);
+            this.chercherBtm.Name = "chercherBtm";
+            this.chercherBtm.Size = new System.Drawing.Size(114, 33);
+            this.chercherBtm.TabIndex = 5;
+            this.chercherBtm.Text = "Chercher";
+            this.chercherBtm.UseVisualStyleBackColor = true;
+            this.chercherBtm.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // ajouterBtm
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Navy;
-            this.button2.Location = new System.Drawing.Point(23, 78);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 33);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Modifier";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ajouterBtm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ajouterBtm.ForeColor = System.Drawing.Color.Navy;
+            this.ajouterBtm.Location = new System.Drawing.Point(22, 219);
+            this.ajouterBtm.Name = "ajouterBtm";
+            this.ajouterBtm.Size = new System.Drawing.Size(112, 33);
+            this.ajouterBtm.TabIndex = 6;
+            this.ajouterBtm.Text = "Ajouter";
+            this.ajouterBtm.UseVisualStyleBackColor = true;
+            this.ajouterBtm.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -248,13 +258,44 @@
             // 
             this.listeResvBtm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listeResvBtm.ForeColor = System.Drawing.Color.Navy;
-            this.listeResvBtm.Location = new System.Drawing.Point(162, 78);
+            this.listeResvBtm.Location = new System.Drawing.Point(62, 268);
             this.listeResvBtm.Name = "listeResvBtm";
             this.listeResvBtm.Size = new System.Drawing.Size(252, 33);
             this.listeResvBtm.TabIndex = 7;
             this.listeResvBtm.Text = "Liste des reservations ";
             this.listeResvBtm.UseVisualStyleBackColor = true;
             this.listeResvBtm.Click += new System.EventHandler(this.listeResvBtm_Click);
+            // 
+            // teleClt
+            // 
+            this.teleClt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teleClt.Location = new System.Drawing.Point(108, 164);
+            this.teleClt.Name = "teleClt";
+            this.teleClt.Size = new System.Drawing.Size(218, 30);
+            this.teleClt.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(21, 163);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 29);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Mobile";
+            // 
+            // modifierBtm
+            // 
+            this.modifierBtm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifierBtm.ForeColor = System.Drawing.Color.Navy;
+            this.modifierBtm.Location = new System.Drawing.Point(150, 217);
+            this.modifierBtm.Name = "modifierBtm";
+            this.modifierBtm.Size = new System.Drawing.Size(112, 33);
+            this.modifierBtm.TabIndex = 10;
+            this.modifierBtm.Text = "Modifier";
+            this.modifierBtm.UseVisualStyleBackColor = true;
+            this.modifierBtm.Click += new System.EventHandler(this.modifierBtm_Click);
             // 
             // idclientsDataGridViewTextBoxColumn
             // 
@@ -285,12 +326,24 @@
             // 
             this.clientsBindingSource.DataSource = typeof(PFE.Entities.Clients);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1022, 705);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 37);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Quitter";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // ListeClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(993, 693);
+            this.ClientSize = new System.Drawing.Size(1130, 749);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -325,13 +378,17 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridRes;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ajouterBtm;
+        private System.Windows.Forms.Button chercherBtm;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclientsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cinDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button listeResvBtm;
+        private System.Windows.Forms.TextBox teleClt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button modifierBtm;
+        private System.Windows.Forms.Button button1;
     }
 }

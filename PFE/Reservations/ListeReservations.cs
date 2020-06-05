@@ -162,5 +162,22 @@ namespace PFE.Reservations
                 MessageBox.Show("Veuillez choisir un element parmi la liste");
             }
         }
-    }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Index != -1)
+            {
+                int id_idres = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Number"].Value);
+                PFE.Repport.factureForm reportFrm = new PFE.Repport.factureForm();
+                reportFrm.getIdReservation(id_idres);
+                this.Hide();
+                reportFrm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir un element parmi la liste");
+            }
+
+            }
+        }
 }

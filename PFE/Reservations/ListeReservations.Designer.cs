@@ -54,6 +54,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.facturebtm = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -62,6 +63,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.facturebtm);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.dataGridView1);
@@ -380,6 +382,17 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Gstion des Reservations";
             // 
+            // facturebtm
+            // 
+            this.facturebtm.ForeColor = System.Drawing.Color.Navy;
+            this.facturebtm.Location = new System.Drawing.Point(814, 28);
+            this.facturebtm.Name = "facturebtm";
+            this.facturebtm.Size = new System.Drawing.Size(145, 37);
+            this.facturebtm.TabIndex = 4;
+            this.facturebtm.Text = "Facture";
+            this.facturebtm.UseVisualStyleBackColor = true;
+            this.facturebtm.Click += new System.EventHandler(this.button4_Click);
+            // 
             // ListeReservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -429,5 +442,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button facturebtm;
     }
 }
